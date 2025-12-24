@@ -27,14 +27,15 @@ void setup() {
 
   NoU3.begin();
 
+  pivotMotor.setInverted(true);
+  pivotMotor.beginEncoder();
+
   delay(500);
+  NoU3.setServiceLight(LIGHT_CALIBRATING);
   NoU3.calibrateIMUs();  // this takes exactly one second. Do not move the robot during calibration.
 
   beginDrivetrain();
   beginVision();
-
-  pivotMotor.setInverted(true);
-  pivotMotor.beginEncoder();
 }
 
 void loop() {
